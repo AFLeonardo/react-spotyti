@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import { Image, Pressable, StyleSheet, View } from 'react-native';
 import { ActivityIndicator, IconButton, ProgressBar, Text, useTheme } from 'react-native-paper';
 import { usePlayer } from '../context/PlayerContext';
@@ -15,24 +16,36 @@ export default function MiniPlayer({ onPress }) {
     esFavorito,
     alternarFavorito,
   } = usePlayer();
+  const ultimaCancionRef = useRef(null);
+  const [cancionMostrada, setCancionMostrada] = useState(null);
 
-  if (!cancionActual) return null;
-  const favorito = esFavorito(cancionActual.id);
+  useEffect(() => {
+    if (!cancionActual) {
+      ultimaCancionRef.current = null;
+      setCancionMostrada(null);
+      return;
+    }
+    setCancionMostrada(ultimaCancionRef.current ?? cancionActual);
+    ultimaCancionRef.current = cancionActual;
+  }, [cancionActual?.id]);
+
+  if (!cancionActual || !cancionMostrada) return null;
+  const favorito = esFavorito(cancionMostrada.id);
 
   return (
     <Pressable onPress={onPress} style={styles.contenedor}>
       <View style={styles.fila}>
-        <Image source={{ uri: cancionActual.portada }} style={styles.portada} />
+        <Image source={{ uri: cancionMostrada.portada }} style={styles.portada} />
         <View style={styles.textos}>
-          <Text variant="titleSmall" numberOfLines={1}>{cancionActual.titulo}</Text>
+          <Text variant="titleSmall" numberOfLines={1}>{cancionMostrada.titulo}</Text>
           <Text variant="bodySmall" numberOfLines={1} style={styles.artista}>
-            {cancionActual.artista}
+            {cancionMostrada.artista}
           </Text>
         </View>
         <IconButton
           icon={favorito ? 'heart' : 'heart-outline'}
           iconColor={favorito ? theme.colors.primary : theme.colors.onSurface}
-          onPress={() => alternarFavorito(cancionActual)}
+          onPress={() => alternarFavorito(cancionMostrada)}
         />
         {cargando ? (
           <ActivityIndicator size={20} style={styles.cargando} />
