@@ -1,0 +1,20 @@
+{
+    "categorias": [
+        "Fiesta",
+        "Hip Hop",
+        "Pop",
+        "Tristes"
+    ],
+    "canciones": [
+        {
+            "nombre": "Starboy Remix",
+            "artista": "The Weekend",
+            "album": ""
+        },
+        {
+            "nombre": "Superman",
+            "artista": "Eminem",
+            "album": ""
+        }
+    ]
+}
