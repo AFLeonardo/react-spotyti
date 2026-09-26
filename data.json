@@ -7,14 +7,76 @@
     ],
     "canciones": [
         {
-            "nombre": "Starboy Remix",
-            "artista": "The Weekend",
-            "album": ""
+            "id": "1",
+            "titulo": "Starboy Remix",
+            "artista": "The Weeknd",
+            "album": "Starboy",
+            "categoria": "Pop",
+            "portada": "https://cdn.shoplightspeed.com/shops/617250/files/50715333/1600x2048x2/republic-weeknd-starboy-lp.jpg",
+            "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
         },
         {
-            "nombre": "Superman",
+            "id": "2",
+            "titulo": "Superman",
             "artista": "Eminem",
-            "album": ""
+            "album": "The Eminem Show",
+            "categoria": "Hip Hop",
+            "portada": "https://picsum.photos/seed/superman/400",
+            "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+        },
+        {
+            "id": "3",
+            "titulo": "Noche de Neón",
+            "artista": "Luna Roja",
+            "album": "Ciudad Eléctrica",
+            "categoria": "Fiesta",
+            "portada": "https://picsum.photos/seed/neon/400",
+            "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+        },
+        {
+            "id": "4",
+            "titulo": "Lluvia en Abril",
+            "artista": "Marea Baja",
+            "album": "Estaciones",
+            "categoria": "Tristes",
+            "portada": "https://picsum.photos/seed/lluvia/400",
+            "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3"
+        },
+        {
+            "id": "5",
+            "titulo": "Ritmo Callejero",
+            "artista": "MC Sombra",
+            "album": "Barrio",
+            "categoria": "Hip Hop",
+            "portada": "https://picsum.photos/seed/barrio/400",
+            "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3"
+        },
+        {
+            "id": "6",
+            "titulo": "Verano Infinito",
+            "artista": "Los Tropicales",
+            "album": "Playa",
+            "categoria": "Fiesta",
+            "portada": "https://picsum.photos/seed/verano/400",
+            "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3"
+        },
+        {
+            "id": "7",
+            "titulo": "Corazón de Papel",
+            "artista": "Ana Solar",
+            "album": "Cartas",
+            "categoria": "Pop",
+            "portada": "https://picsum.photos/seed/papel/400",
+            "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3"
+        },
+        {
+            "id": "8",
+            "titulo": "Último Adiós",
+            "artista": "Marea Baja",
+            "album": "Estaciones",
+            "categoria": "Tristes",
+            "portada": "https://picsum.photos/seed/adios/400",
+            "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3"
         }
     ]
 }
