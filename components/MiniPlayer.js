@@ -30,7 +30,7 @@ export default function MiniPlayer({ onPress }) {
   }, [cancionActual?.id]);
 
   if (!cancionActual || !cancionMostrada) return null;
-  const favorito = esFavorito(cancionMostrada.id);
+  const favorito = esFavorito(cancionActual.id);
 
   return (
     <Pressable onPress={onPress} style={styles.contenedor}>
@@ -45,7 +45,7 @@ export default function MiniPlayer({ onPress }) {
         <IconButton
           icon={favorito ? 'heart' : 'heart-outline'}
           iconColor={favorito ? theme.colors.primary : theme.colors.onSurface}
-          onPress={() => alternarFavorito(cancionMostrada)}
+          onPress={() => alternarFavorito(cancionActual)}
         />
         {cargando ? (
           <ActivityIndicator size={20} style={styles.cargando} />
