@@ -29,23 +29,24 @@ export default function MiniPlayer({ onPress }) {
     ultimaCancionRef.current = cancionActual;
   }, [cancionActual]);
 
-  if (!cancionActual || !cancionMostrada) return null;
-  const favorito = esFavorito(cancionActual.id);
+  if (!cancionActual) return null;
+  const cancionVisible = cancionMostrada ?? cancionActual;
+  const favorito = esFavorito(cancionVisible.id);
 
   return (
     <Pressable onPress={onPress} style={styles.contenedor}>
       <View style={styles.fila}>
-        <Image source={{ uri: cancionMostrada.portada }} style={styles.portada} />
+        <Image source={{ uri: cancionVisible.portada }} style={styles.portada} />
         <View style={styles.textos}>
-          <Text variant="titleSmall" numberOfLines={1}>{cancionMostrada.titulo}</Text>
+          <Text variant="titleSmall" numberOfLines={1}>{cancionVisible.titulo}</Text>
           <Text variant="bodySmall" numberOfLines={1} style={styles.artista}>
-            {cancionMostrada.artista}
+            {cancionVisible.artista}
           </Text>
         </View>
         <IconButton
           icon={favorito ? 'heart' : 'heart-outline'}
           iconColor={favorito ? theme.colors.primary : theme.colors.onSurface}
-          onPress={() => alternarFavorito(cancionActual)}
+          onPress={() => alternarFavorito(cancionVisible)}
         />
         {cargando ? (
           <ActivityIndicator size={20} style={styles.cargando} />
