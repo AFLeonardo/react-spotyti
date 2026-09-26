@@ -27,7 +27,7 @@ export default function MiniPlayer({ onPress }) {
     }
     setCancionMostrada(ultimaCancionRef.current ?? cancionActual);
     ultimaCancionRef.current = cancionActual;
-  }, [cancionActual?.id]);
+  }, [cancionActual]);
 
   if (!cancionActual || !cancionMostrada) return null;
   const favorito = esFavorito(cancionActual.id);
