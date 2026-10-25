@@ -1,5 +1,6 @@
 import { Image, Pressable, StyleSheet, View } from 'react-native';
 import { ActivityIndicator, IconButton, ProgressBar, Text, useTheme } from 'react-native-paper';
+import { hapticoConfirmar } from './haptico';
 import { usePlayer } from '../context/PlayerContext';
 
 // Barra fija arriba de las pestañas; al tocarla abre la vista Reproducir
@@ -32,7 +33,10 @@ export default function MiniPlayer({ onPress }) {
         <IconButton
           icon={favorito ? 'heart' : 'heart-outline'}
           iconColor={favorito ? theme.colors.primary : theme.colors.onSurface}
-          onPress={() => alternarFavorito(cancionActual)}
+          onPress={() => {
+            alternarFavorito(cancionActual);
+            hapticoConfirmar();
+          }}
         />
         {cargando ? (
           <ActivityIndicator size={20} style={styles.cargando} />

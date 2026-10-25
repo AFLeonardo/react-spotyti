@@ -19,6 +19,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import data from '../data.json';
 import SongListItem from '../components/SongListItem';
+import { hapticoCancelar, hapticoConfirmar } from '../components/haptico';
 import { usePlayer } from '../context/PlayerContext';
 import { usePlaylists } from '../context/PlaylistContext';
 
@@ -100,11 +101,17 @@ export default function PlaylistsScreen() {
           key={cancion.id}
           title={cancion.titulo}
           description={cancion.artista}
-          onPress={() => alternarSeleccion(cancion.id)}
+          onPress={() => {
+            alternarSeleccion(cancion.id);
+            hapticoConfirmar();
+          }}
           left={() => (
             <Checkbox
               status={seleccionada ? 'checked' : 'unchecked'}
-              onPress={() => alternarSeleccion(cancion.id)}
+              onPress={() => {
+                alternarSeleccion(cancion.id);
+                hapticoConfirmar();
+              }}
             />
           )}
         />
@@ -256,10 +263,22 @@ export default function PlaylistsScreen() {
             {renderSelectorCanciones(data.canciones)}
             <Divider style={styles.divisor} />
             <View style={styles.botonesModal}>
-              <Button onPress={() => setCrearVisible(false)}>Cancelar</Button>
+              <Button
+                onPress={() => {
+                  hapticoCancelar();
+                  setCrearVisible(false);
+                }}
+              >
+                Cancelar
+              </Button>
               <Button
                 mode="contained"
-                onPress={guardarPlaylist}
+                onPress={
+                  () => {
+                    guardarPlaylist();
+                    hapticoConfirmar();
+                  }
+                }
                 loading={guardando}
                 disabled={!nombre.trim() || Boolean(error) || guardando}
               >

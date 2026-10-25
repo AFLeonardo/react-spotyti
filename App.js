@@ -6,6 +6,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { theme } from './theme';
 import { PlayerProvider } from './context/PlayerContext';
 import { PlaylistProvider } from './context/PlaylistContext';
+import { hapticoSeleccionar } from './components/haptico';
 import InicioScreen from './screens/InicioScreen';
 import FavoritosScreen from './screens/FavoritosScreen';
 import PlaylistsScreen from './screens/PlaylistsScreen';
@@ -38,7 +39,10 @@ function Principal() {
       {/* Usamos solo la barra de Paper para poder colocar el MiniPlayer encima */}
       <BottomNavigation.Bar
         navigationState={{ index: indice, routes: rutas }}
-        onTabPress={({ route }) => setIndice(rutas.findIndex((r) => r.key === route.key))}
+        onTabPress={({ route }) => {
+          hapticoSeleccionar();
+          setIndice(rutas.findIndex((r) => r.key === route.key));
+        }}
       />
       <ReproducirScreen visible={reproductorVisible} onClose={() => setReproductorVisible(false)} />
     </View>

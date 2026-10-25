@@ -1,5 +1,6 @@
 import { Image, StyleSheet } from 'react-native';
 import { IconButton, List, useTheme } from 'react-native-paper';
+import { hapticoConfirmar } from './haptico';
 import { usePlayer } from '../context/PlayerContext';
 
 // Fila de canción con portada y botón de favorito
@@ -22,7 +23,10 @@ export default function SongListItem({ cancion, onPress }) {
         <IconButton
           icon={favorito ? 'heart' : 'heart-outline'}
           iconColor={favorito ? theme.colors.primary : theme.colors.onSurfaceVariant}
-          onPress={() => alternarFavorito(cancion)}
+          onPress={() => {
+            alternarFavorito(cancion);
+            hapticoConfirmar();
+          }}
           accessibilityLabel={favorito ? 'Quitar de favoritos' : 'Agregar a favoritos'}
         />
       )}

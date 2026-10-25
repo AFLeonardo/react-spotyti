@@ -2,6 +2,7 @@ import { Image, Modal, StyleSheet, useWindowDimensions, View } from 'react-nativ
 import { ActivityIndicator, IconButton, Text, useTheme } from 'react-native-paper';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import BarraProgreso from '../components/BarraProgreso';
+import { hapticoConfirmar } from '../components/haptico';
 import { usePlayer } from '../context/PlayerContext';
 
 // Vista de reproducción a pantalla completa (se abre desde el MiniPlayer)
@@ -56,7 +57,10 @@ export default function ReproducirScreen({ visible, onClose }) {
                 icon={favorito ? 'heart' : 'heart-outline'}
                 iconColor={favorito ? theme.colors.primary : theme.colors.onSurface}
                 size={28}
-                onPress={() => alternarFavorito(cancionActual)}
+                onPress={() => {
+                  alternarFavorito(cancionActual);
+                  hapticoConfirmar();
+                }}
                 accessibilityLabel={favorito ? 'Quitar de favoritos' : 'Agregar a favoritos'}
               />
             </View>
